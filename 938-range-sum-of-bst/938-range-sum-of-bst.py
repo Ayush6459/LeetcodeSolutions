@@ -13,16 +13,16 @@ class Solution(object):
         :type high: int
         :rtype: int
         """
-        res = []
+        self.r = 0
         def InOrder(root,low,high):
             if not root:
                 return
             if root.val>=low and root.val<=high:
-                res.append(root.val)
+                self.r+=root.val
             InOrder(root.left,low,high)
             InOrder(root.right,low,high)
         InOrder(root,low,high)
-        return sum(res)
+        return self.r
     
         
         
