@@ -7,6 +7,29 @@
 from collections import deque
 class Solution:
     def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        # method 1
+        if not root :return[]
+        q = deque()
+        reverse = False
+        q.append(root)
+        res1=[]
+        while q:
+            count = len(q)
+            temp = []
+            for i in range(count):
+                x = q.popleft()
+                temp.append(x.val)
+                if x.left:q.append(x.left)
+                if x.right:q.append(x.right)
+            
+            if reverse:res1.append(reversed(temp))
+            else:
+                res1.append(temp)
+            reverse = not reverse
+        return res1
+        
+    
+        '''
         s1 = deque() 
         s2 = deque()
         # check if root is empty
@@ -48,3 +71,5 @@ class Solution:
                 res.append(temp)
                 
         return res
+        '''
+        
