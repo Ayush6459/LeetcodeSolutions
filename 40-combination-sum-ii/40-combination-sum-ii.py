@@ -5,16 +5,16 @@ class Solution:
         
         def backtrack(curr,index,target):
             if target == 0:
-                res.append(curr.copy())
+                res.append(curr)
             if target<=0:
                 return
             prev = -1
             for i in range(index,len(candidates)):
                 if candidates[i]==prev:
                     continue
-                curr.append(candidates[i])
-                backtrack(curr,i+1,target-candidates[i])
-                curr.pop()
+                #curr.append(candidates[i])
+                backtrack(curr+[candidates[i]],i+1,target-candidates[i])
+                #curr.pop()
                 prev = candidates[i]
                 
         backtrack([],0,target)
