@@ -5,10 +5,13 @@ class Solution:
                 res.append(int(s))
                 return 
             x = int(s[-1])
-            if x-k >=0:
-                generate(s+str(x-k),n,k,res)
-            if x+k<=9:
-                generate(s+str(x+k),n,k,res)
+            if k == 0:
+                generate(s+str(x),n,k,res)
+            else:
+                if x-k >=0:
+                    generate(s+str(x-k),n,k,res)
+                if x+k<=9:
+                    generate(s+str(x+k),n,k,res)
             return res 
         
         result = []
@@ -18,4 +21,4 @@ class Solution:
             result.extend(temp)
             s=str(int(s)+1)
             
-        return set(result)
+        return result
