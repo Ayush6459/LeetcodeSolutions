@@ -1,0 +1,25 @@
+identification of Sliding Window Problems :
+    -> input will be arrays or strings 
+    -> will ask about some subarrays or substrings
+    -> along with that it will ask to find about somethings largest or minimum with a given window size of K
+
+Two types : 
+    1. Fixed Size window 
+    2. Variable Size window
+    
+
+variable size formate:
+
+    while j<len:
+        calculation
+        if condition<k:
+            j+=1
+        elif condition == k:
+            ans <- calculation
+            J+=1
+        elif condition>k:
+            while condition>k:
+                remove calculation for i 
+                i+=1
+            j+=1
+    return ans 
