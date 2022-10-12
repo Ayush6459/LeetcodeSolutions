@@ -17,9 +17,9 @@ def ToplogicalSort(graph):
     for i in range(len(graph)):
         if visited[i] == 0:
             TopologicalRec(graph,i,visited,stack)
-    print(visited)
+    
     print(stack)
 
-graph = [[1,2],[3],[],[],[5],[]]
+graph = [[1,2],[2,3],[5],[0],[5],[],[]]
 ToplogicalSort(graph)
     
