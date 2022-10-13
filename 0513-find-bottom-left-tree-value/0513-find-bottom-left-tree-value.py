@@ -10,17 +10,17 @@ class Solution:
         
         def bfs(root):
             if root is None :return
-            q  = [(root,0)]
+            q  = [root]
             prev = []
             while q:
                 
                 temp = []
                 for i in q:
-                    temp.extend([(i[0].left,-1),(i[0].right,1)])
+                    temp.extend([i.left,i.right])
                 prev = q[:]
-                q = [i for i in temp if i[0]]
+                q = [i for i in temp if i]
                 
-            return prev[0][0].val
+            return prev[0].val
         return (bfs(root))
             
         
