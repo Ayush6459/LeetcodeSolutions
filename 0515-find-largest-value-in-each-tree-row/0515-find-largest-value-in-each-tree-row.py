@@ -10,14 +10,15 @@ class Solution:
             return []
         q = [root]
         ans = []
-        
         while q:
-            temp = []
+            size = len(q)
             maxi = float('-inf')
-            for node in q:
-                maxi = max(maxi,node.val)
-                temp.extend([node.left,node.right])
-            q = [i for i in temp if i]
-                    
+            for _ in range(size):
+                node = q.pop(0)
+                maxi = max(maxi, node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
             ans.append(maxi)
         return ans
