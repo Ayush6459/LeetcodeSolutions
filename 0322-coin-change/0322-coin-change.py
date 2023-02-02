@@ -1,20 +1,16 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
+        # bottom up approach
         dp = {}
-        
-        def helper(amount):
-            if amount == 0:
-                return 0
-            if amount in dp:return dp[amount]
-            ans = sys.maxsize
+        dp[0] = 0
+        for i in range(1,amount+1):
+            dp[i] = sys.maxsize
             for coin in coins:
-                if amount-coin>=0:
-                    subproblem = helper(amount-coin)
+                if i-coin>=0:
+                    subproblem = dp[i-coin]
                     if subproblem != -1:
-                        ans = min(ans,subproblem+1)
-                        
-                    
-            dp[amount] = ans if ans!=sys.maxsize else -1
-            return dp[amount]
-        return helper(amount)
+                        dp[i] = min(dp[i],subproblem+1)
+            dp[i] = dp[i] if dp[i]!=sys.maxsize else -1
+        return dp[amount]
+         
             
