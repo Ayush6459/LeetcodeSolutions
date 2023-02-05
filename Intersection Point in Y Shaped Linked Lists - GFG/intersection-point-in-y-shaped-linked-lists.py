@@ -23,17 +23,13 @@
 class Solution:
     
     def intersetPoint(self,headA,headB):
-        s = set()
-        curr = headA
-        while curr:
-            s.add(curr)
-            curr= curr.next
-        curr = headB
-        while curr:
-            if curr in s:
-                return curr.data
-            curr = curr.next
-        return -1
+        currA = headA
+        currB = headB
+        while currA != currB:
+            currA = currA.next if currA else headB
+            currB = currB.next if currB else headA
+        return currA.data if currA else -1
+        
 
 
 #{ 
