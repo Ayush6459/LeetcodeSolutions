@@ -1,5 +1,6 @@
 class Solution:
     def totalFruit(self, fruits: List[int]) -> int:
+        # We use a hash map 'basket' to store the number of each type of fruit.
         basket = {}
         max_picked = 0
         left = 0
