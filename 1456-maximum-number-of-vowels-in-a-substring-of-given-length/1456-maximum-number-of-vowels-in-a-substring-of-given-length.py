@@ -1,26 +1,22 @@
 class Solution:
     def maxVowels(self, s: str, k: int) -> int:
-        vowel = {'a','e','i','o','u'}
-        n = len(s)
-        q = deque()
-        i = 0
-        res = VC = 0
-        while i<n:
-            if len(q)<k:
-                q.append(s[i])
-                if s[i] in vowel : VC+=1
-                res = max(res,VC)
-                i+=1
-            else:
-                x = q.popleft()
-                if x in vowel: VC-=1
-                q.append(s[i])
-                
-                if s[i] in vowel : VC+=1
-                res = max(res,VC)
-                i+=1
-        return res
+        vowels = {'a', 'e', 'i', 'o', 'u'}
         
-        # TC : O(N) , SC : O(N)
+        # Build the window of size k, count the number of vowels it contains.
+        count = 0
+        for i in range(k):
+            count += int(s[i] in vowels)
+        answer = count
+        
+        # Slide the window to the right, focus on the added character and the
+        # removed character and update "count". Record the largest "count".
+        for i in range(k, len(s)):
+            count += int(s[i] in vowels)
+            count -= int(s[i - k] in vowels)
+            answer = max(answer, count)
+        
+        return answer
+        
+        # TC : O(N) , SC : O(1)
                 
         
