@@ -20,5 +20,7 @@ class Solution:
                 res = max(res,VC)
                 i+=1
         return res
+        
+        # TC : O(N) , SC : O(N)
                 
         
